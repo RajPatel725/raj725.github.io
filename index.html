@@ -3,114 +3,645 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | [Your Name]</title>
+    <title>Web Developer Portfolio</title>
     <style>
-        /* Simple, Clean CSS */
-        :root { --primary: #2563eb; --dark: #1e293b; --light: #f8fafc; }
-        body { font-family: system-ui, -apple-system, sans-serif; margin: 0; line-height: 1.6; color: var(--dark); }
-        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
-        
-        /* Header */
-        header { background: var(--dark); color: white; padding: 4rem 1rem; text-align: center; }
-        header h1 { margin: 0; font-size: 2.5rem; }
-        header p { color: #94a3b8; font-size: 1.2rem; }
-        .btn { display: inline-block; background: var(--primary); color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 15px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        /* Sections */
-        section { padding: 4rem 0; border-bottom: 1px solid #e2e8f0; }
-        h2 { color: var(--primary); text-align: center; margin-bottom: 2rem; }
-        
-        /* Grid for Projects */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .card { background: white; border: 1px solid #e2e8f0; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); transition: transform 0.2s; }
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { margin-top: 0; }
-        .tag { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; margin-right: 5px; }
-        .link { color: var(--primary); font-weight: bold; text-decoration: none; display: inline-block; margin-top: 10px; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
 
-        /* Contact */
-        .contact { text-align: center; }
+        /* Animated Background Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        /* Header Section */
+        header {
+            position: relative;
+            z-index: 10;
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Filter Buttons */
+        .filter-section {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .filter-btn {
+            background: white;
+            border: none;
+            padding: 12px 30px;
+            margin: 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* Project Card */
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+            position: relative;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .project-number {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 3rem;
+            font-weight: bold;
+            opacity: 0.2;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-body {
+            padding: 25px;
+        }
+
+        .project-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .project-link:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .project-link span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            margin-top: 60px;
+        }
+
+        footer p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                gap: 20px;
+            }
+
+            .stat-item {
+                padding: 10px 20px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid white;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="particles" id="particles"></div>
 
+    <!-- Header -->
     <header>
-        <div class="container">
-            <h1>Raj Patel</h1>
-            <p>Full Stack Developer | UI/UX Designer</p>
-            <p>Building high-performance web experiences for global clients.</p>
-            <a href="#projects" class="btn">View My Work</a>
+        <h1>Web Development Portfolio</h1>
+        <p class="tagline">Crafting Digital Experiences with Passion & Precision</p>
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number" id="projectCount">24</span>
+                <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Industries</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Satisfaction</span>
+            </div>
         </div>
     </header>
 
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto;">
-                I am a passionate developer with experience building diverse web solutions, from E-commerce platforms in Belgium to Construction services in Australia. I specialize in creating responsive, user-friendly, and SEO-optimized websites.
-            </p>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+            <button class="filter-btn" data-filter="corporate">Corporate</button>
+            <button class="filter-btn" data-filter="services">Services</button>
+            <button class="filter-btn" data-filter="creative">Creative</button>
         </div>
-    </section>
 
-    <section id="projects">
-        <div class="container">
-            <h2>Featured Projects</h2>
-            <div class="project-grid">
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projectsGrid"></div>
+
+        <!-- Loading -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Loading Projects...</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Built with ❤️ and Code | © 2026 Web Development Portfolio</p>
+    </footer>
+
+    <script>
+        // Project Data (removed duplicates)
+        const projects = [
+            {
+                title: "NACS Consulting",
+                url: "https://nacsconsulting.com/",
+                category: "corporate",
+                description: "Professional consulting firm website with comprehensive service portfolio and client solutions."
+            },
+            {
+                title: "Excel Supplements",
+                url: "https://excelsupplements.com/excelone/",
+                category: "ecommerce",
+                description: "Premium supplements e-commerce platform with product catalog and online ordering system."
+            },
+            {
+                title: "Pitcher Perfect Roofing",
+                url: "https://www.pitcherperfectroofing.com.au/",
+                category: "services",
+                description: "Australian roofing services showcase with portfolio gallery and contact features."
+            },
+            {
+                title: "At Height",
+                url: "https://at-height.co.uk/",
+                category: "services",
+                description: "UK-based height access and safety services with detailed service information."
+            },
+            {
+                title: "Warren Claughton",
+                url: "https://warrenclaughton.com.au/",
+                category: "corporate",
+                description: "Professional portfolio and business services website for Australian market."
+            },
+            {
+                title: "Qodiva",
+                url: "https://qodiva.com/",
+                category: "ecommerce",
+                description: "Modern e-commerce platform with elegant product displays and user experience."
+            },
+            {
+                title: "Kaipiko",
+                url: "https://kaipiko.com/",
+                category: "creative",
+                description: "Creative and innovative digital platform with unique design elements."
+            },
+            {
+                title: "MindGrow",
+                url: "https://mindgrow.io/",
+                category: "corporate",
+                description: "Personal development and growth platform with educational resources."
+            },
+            {
+                title: "Living Colorz",
+                url: "https://livingcolorz.com/",
+                category: "creative",
+                description: "Vibrant creative studio showcasing colorful design and artistic services."
+            },
+            {
+                title: "Blown Away Glass",
+                url: "https://blownawayglass.nyusoft.in",
+                category: "creative",
+                description: "Artistic glass blowing studio with gallery and custom design options."
+            },
+            {
+                title: "Nova Market",
+                url: "https://novamarket.be",
+                category: "ecommerce",
+                description: "Belgian marketplace platform connecting buyers with quality products."
+            },
+            {
+                title: "ilek",
+                url: "https://www.ilek.fr/",
+                category: "corporate",
+                description: "French renewable energy provider with sustainable solutions and services."
+            },
+            {
+                title: "MHM Paints",
+                url: "https://mhmpaints.com.au/",
+                category: "services",
+                description: "Australian painting services with portfolio and color consultation features."
+            },
+            {
+                title: "Elite New Homes",
+                url: "https://elitenewhomes.com.au/",
+                category: "corporate",
+                description: "Premium home building services with showcase of luxury properties."
+            },
+            {
+                title: "Blinds and Designers",
+                url: "https://blindsanddesigners.com.au/",
+                category: "ecommerce",
+                description: "Window treatment specialists offering custom blinds and design solutions."
+            },
+            {
+                title: "Khus Khus",
+                url: "https://khus-khus.com/",
+                category: "ecommerce",
+                description: "Specialty products marketplace with unique offerings and curated collections."
+            },
+            {
+                title: "Demila Marie",
+                url: "https://demilamarie.com/",
+                category: "creative",
+                description: "Personal brand and creative portfolio with artistic presentations."
+            },
+            {
+                title: "Get EZPZ",
+                url: "https://getezpz.com/",
+                category: "services",
+                description: "Simplified service solutions making complex tasks easy and accessible."
+            },
+            {
+                title: "Flatworld Philippines",
+                url: "https://flatworldphilippines.com/",
+                category: "corporate",
+                description: "Business process outsourcing services with global reach and expertise."
+            },
+            {
+                title: "AWAG India",
+                url: "https://awagindia.org/",
+                category: "corporate",
+                description: "Non-profit organization platform promoting social causes and community welfare."
+            },
+            {
+                title: "Accquint",
+                url: "https://accquint.com",
+                category: "corporate",
+                description: "Professional services firm specializing in business solutions and consulting."
+            },
+            {
+                title: "Eleazar Lua Real Estate",
+                url: "https://eleazarluarealestate.com/",
+                category: "services",
+                description: "Real estate services with property listings and investment opportunities."
+            },
+            {
+                title: "Good Earth Tours",
+                url: "https://goodearthtours.com/",
+                category: "services",
+                description: "Eco-friendly travel and tour services promoting sustainable tourism experiences."
+            }
+        ];
+
+        // Generate particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 10 + 5 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Render projects
+        function renderProjects(filter = 'all') {
+            const grid = document.getElementById('projectsGrid');
+            grid.innerHTML = '';
+            
+            const filteredProjects = filter === 'all' 
+                ? projects 
+                : projects.filter(p => p.category === filter);
+
+            filteredProjects.forEach((project, index) => {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+                card.style.animationDelay = (index * 0.1) + 's';
                 
-                <div class="card">
-                    <h3>Nova Market</h3>
-                    <div><span class="tag">E-Commerce</span> <span class="tag">Retail</span></div>
-                    <p>A full-featured grocery e-commerce platform with dynamic inventory and bilingual support.</p>
-                    <a href="https://novamarket.be" target="_blank" class="link">Visit Site &rarr;</a>
-                </div>
+                card.innerHTML = `
+                    <div class="project-header">
+                        <span class="project-number">${String(index + 1).padStart(2, '0')}</span>
+                        <h3 class="project-title">${project.title}</h3>
+                        <span class="project-category">${project.category}</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">${project.description}</p>
+                        <a href="${project.url}" target="_blank" class="project-link">
+                            <span>View Project →</span>
+                        </a>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
 
-                <div class="card">
-                    <h3>Pitcher Perfect Roofing</h3>
-                    <div><span class="tag">Corporate</span> <span class="tag">Lead Gen</span></div>
-                    <p>Corporate site for an Australian roofing company featuring 24/7 emergency lead capture.</p>
-                    <a href="https://pitcherperfectroofing.com.au/" target="_blank" class="link">Visit Site &rarr;</a>
-                </div>
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderProjects(this.dataset.filter);
+            });
+        });
 
-                <div class="card">
-                    <h3>ilek (France)</h3>
-                    <div><span class="tag">Utility</span> <span class="tag">Green Energy</span></div>
-                    <p>Subscription flow and user dashboard for a renewable energy provider.</p>
-                    <a href="https://www.ilek.fr/" target="_blank" class="link">Visit Site &rarr;</a>
-                </div>
+        // Initialize
+        createParticles();
+        renderProjects();
 
-                <div class="card">
-                    <h3>Good Earth Tours</h3>
-                    <div><span class="tag">Travel</span> <span class="tag">Booking</span></div>
-                    <p>Complex itinerary builder for international safari and trek bookings.</p>
-                    <a href="https://goodearthtours.com/" target="_blank" class="link">Visit Site &rarr;</a>
-                </div>
+        // Update project count
+        document.getElementById('projectCount').textContent = projects.length;
 
-                <div class="card">
-                    <h3>AWAG India</h3>
-                    <div><span class="tag">Non-Profit</span> <span class="tag">NGO</span></div>
-                    <p>Accessible NGO website with secure donation gateway integration.</p>
-                    <a href="https://awagindia.org/" target="_blank" class="link">Visit Site &rarr;</a>
-                </div>
-
-                <div class="card">
-                    <h3>At Height (UK)</h3>
-                    <div><span class="tag">B2B</span> <span class="tag">Industrial</span></div>
-                    <p>Technical catalog for safety equipment with granular filtering.</p>
-                    <a href="https://at-height.co.uk/" target="_blank" class="link">Visit Site &rarr;</a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container contact">
-            <h2>Get In Touch</h2>
-            <p>Ready to start a project? Let's connect.</p>
-            <p><strong>Email:</strong> [Your Email Address]</p>
-            <p><strong>LinkedIn:</strong> [Your LinkedIn Link]</p>
-        </div>
-    </section>
-
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
