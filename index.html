@@ -262,6 +262,18 @@
             z-index: 1;
         }
 
+        .project-type {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.95);
+            color: #764ba2;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+
         .project-body {
             padding: 25px;
         }
@@ -383,19 +395,20 @@
     <!-- Header -->
     <header>
         <h1>Web Development Portfolio</h1>
-        <p class="tagline">Crafting Digital Experiences with Passion & Precision</p>
+        <p class="tagline">Versatile Web Developer with a global portfolio spanning Australia, Europe, the UK, and India.</p>
+        <p class="tagline" style="font-size: 1.1rem; margin-top: 10px;">Specializing in high-performance, responsive websites for diverse industries including E-commerce, Construction, Travel, and Non-Profit sectors.</p>
         <div class="stats">
             <div class="stat-item">
-                <span class="stat-number" id="projectCount">24</span>
+                <span class="stat-number" id="projectCount">12</span>
                 <span class="stat-label">Projects</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number">15+</span>
-                <span class="stat-label">Industries</span>
+                <span class="stat-number">4</span>
+                <span class="stat-label">Countries</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number">100%</span>
-                <span class="stat-label">Satisfaction</span>
+                <span class="stat-label">Client Satisfaction</span>
             </div>
         </div>
     </header>
@@ -427,145 +440,91 @@
     </footer>
 
     <script>
-        // Project Data (removed duplicates)
+        // Project Data
         const projects = [
-            {
-                title: "NACS Consulting",
-                url: "https://nacsconsulting.com/",
-                category: "corporate",
-                description: "Professional consulting firm website with comprehensive service portfolio and client solutions."
-            },
-            {
-                title: "Excel Supplements",
-                url: "https://excelsupplements.com/excelone/",
-                category: "ecommerce",
-                description: "Premium supplements e-commerce platform with product catalog and online ordering system."
-            },
-            {
-                title: "Pitcher Perfect Roofing",
-                url: "https://www.pitcherperfectroofing.com.au/",
-                category: "services",
-                description: "Australian roofing services showcase with portfolio gallery and contact features."
-            },
             {
                 title: "At Height",
                 url: "https://at-height.co.uk/",
                 category: "services",
-                description: "UK-based height access and safety services with detailed service information."
-            },
-            {
-                title: "Warren Claughton",
-                url: "https://warrenclaughton.com.au/",
-                category: "corporate",
-                description: "Professional portfolio and business services website for Australian market."
-            },
-            {
-                title: "Qodiva",
-                url: "https://qodiva.com/",
-                category: "ecommerce",
-                description: "Modern e-commerce platform with elegant product displays and user experience."
-            },
-            {
-                title: "Kaipiko",
-                url: "https://kaipiko.com/",
-                category: "creative",
-                description: "Creative and innovative digital platform with unique design elements."
-            },
-            {
-                title: "MindGrow",
-                url: "https://mindgrow.io/",
-                category: "corporate",
-                description: "Personal development and growth platform with educational resources."
-            },
-            {
-                title: "Living Colorz",
-                url: "https://livingcolorz.com/",
-                category: "creative",
-                description: "Vibrant creative studio showcasing colorful design and artistic services."
-            },
-            {
-                title: "Blown Away Glass",
-                url: "https://blownawayglass.nyusoft.in",
-                category: "creative",
-                description: "Artistic glass blowing studio with gallery and custom design options."
+                type: "Construction / Safety Services",
+                description: "UK-based height access and safety services with comprehensive training programs and equipment solutions."
             },
             {
                 title: "Nova Market",
-                url: "https://novamarket.be",
+                url: "https://novamarket.be/",
                 category: "ecommerce",
-                description: "Belgian marketplace platform connecting buyers with quality products."
+                type: "E-Commerce / Grocery Retail",
+                description: "Belgian online marketplace connecting customers with fresh groceries and quality products."
             },
             {
-                title: "ilek",
-                url: "https://www.ilek.fr/",
-                category: "corporate",
-                description: "French renewable energy provider with sustainable solutions and services."
-            },
-            {
-                title: "MHM Paints",
-                url: "https://mhmpaints.com.au/",
-                category: "services",
-                description: "Australian painting services with portfolio and color consultation features."
-            },
-            {
-                title: "Elite New Homes",
-                url: "https://elitenewhomes.com.au/",
-                category: "corporate",
-                description: "Premium home building services with showcase of luxury properties."
-            },
-            {
-                title: "Blinds and Designers",
-                url: "https://blindsanddesigners.com.au/",
-                category: "ecommerce",
-                description: "Window treatment specialists offering custom blinds and design solutions."
+                title: "Demila Marie",
+                url: "https://www.demilamarie.com/",
+                category: "creative",
+                type: "Personal Brand / Fashion",
+                description: "Fashion and lifestyle brand showcasing unique style collections and personal creative vision."
             },
             {
                 title: "Khus Khus",
                 url: "https://khus-khus.com/",
                 category: "ecommerce",
-                description: "Specialty products marketplace with unique offerings and curated collections."
+                type: "E-Commerce / Specialty Products",
+                description: "Premium specialty products marketplace offering curated selections and artisanal goods."
             },
             {
-                title: "Demila Marie",
-                url: "https://demilamarie.com/",
-                category: "creative",
-                description: "Personal brand and creative portfolio with artistic presentations."
+                title: "NACS Consulting",
+                url: "https://nacsconsulting.com/",
+                category: "corporate",
+                type: "Business Consulting / Professional Services",
+                description: "Strategic consulting firm delivering innovative business solutions and expert advisory services."
             },
             {
-                title: "Get EZPZ",
-                url: "https://getezpz.com/",
-                category: "services",
-                description: "Simplified service solutions making complex tasks easy and accessible."
+                title: "Blinds and Designers",
+                url: "https://blindsanddesigners.com.au/",
+                category: "ecommerce",
+                type: "E-Commerce / Home Improvement",
+                description: "Australian window treatment specialists offering custom blinds, shutters, and interior design solutions."
             },
             {
                 title: "Flatworld Philippines",
-                url: "https://flatworldphilippines.com/",
+                url: "https://www.flatworldphilippines.com/",
                 category: "corporate",
-                description: "Business process outsourcing services with global reach and expertise."
-            },
-            {
-                title: "AWAG India",
-                url: "https://awagindia.org/",
-                category: "corporate",
-                description: "Non-profit organization platform promoting social causes and community welfare."
-            },
-            {
-                title: "Accquint",
-                url: "https://accquint.com",
-                category: "corporate",
-                description: "Professional services firm specializing in business solutions and consulting."
-            },
-            {
-                title: "Eleazar Lua Real Estate",
-                url: "https://eleazarluarealestate.com/",
-                category: "services",
-                description: "Real estate services with property listings and investment opportunities."
+                type: "BPO / Outsourcing Services",
+                description: "Global business process outsourcing provider specializing in IT, finance, and customer support services."
             },
             {
                 title: "Good Earth Tours",
                 url: "https://goodearthtours.com/",
                 category: "services",
-                description: "Eco-friendly travel and tour services promoting sustainable tourism experiences."
+                type: "Travel & Tourism / Eco-Tourism",
+                description: "Sustainable travel company offering eco-friendly tour packages and responsible tourism experiences."
+            },
+            {
+                title: "Pitcher Perfect Roofing",
+                url: "https://pitcherperfectroofing.com.au/",
+                category: "services",
+                type: "Construction / Roofing Services",
+                description: "Australian roofing specialists providing installation, repair, and maintenance services with quality craftsmanship."
+            },
+            {
+                title: "ilek",
+                url: "https://www.ilek.fr/",
+                category: "corporate",
+                type: "Energy / Renewable Solutions",
+                description: "French renewable energy provider committed to sustainable electricity and eco-friendly power solutions."
+            },
+            {
+                title: "AWAG India",
+                url: "https://awagindia.org/",
+                category: "corporate",
+                type: "Non-Profit / Social Welfare",
+                description: "Non-profit organization dedicated to community development, education, and social empowerment programs."
+            },
+            {
+                title: "Excel Supplements",
+                url: "https://excelsupplements.com/",
+                category: "ecommerce",
+                type: "E-Commerce / Health & Wellness",
+                description: "Premium nutrition and supplement store offering high-quality products for fitness and wellness enthusiasts."
             }
         ];
 
@@ -605,6 +564,7 @@
                         <span class="project-category">${project.category}</span>
                     </div>
                     <div class="project-body">
+                        <div class="project-type">Type: ${project.type}</div>
                         <p class="project-description">${project.description}</p>
                         <a href="${project.url}" target="_blank" class="project-link">
                             <span>View Project →</span>
