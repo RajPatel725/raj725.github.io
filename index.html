@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | [Your Name]</title>
+    <style>
+        /* Simple, Clean CSS */
+        :root { --primary: #2563eb; --dark: #1e293b; --light: #f8fafc; }
+        body { font-family: system-ui, -apple-system, sans-serif; margin: 0; line-height: 1.6; color: var(--dark); }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        
+        /* Header */
+        header { background: var(--dark); color: white; padding: 4rem 1rem; text-align: center; }
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { color: #94a3b8; font-size: 1.2rem; }
+        .btn { display: inline-block; background: var(--primary); color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 15px; }
+
+        /* Sections */
+        section { padding: 4rem 0; border-bottom: 1px solid #e2e8f0; }
+        h2 { color: var(--primary); text-align: center; margin-bottom: 2rem; }
+        
+        /* Grid for Projects */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .card { background: white; border: 1px solid #e2e8f0; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { margin-top: 0; }
+        .tag { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; margin-right: 5px; }
+        .link { color: var(--primary); font-weight: bold; text-decoration: none; display: inline-block; margin-top: 10px; }
+
+        /* Contact */
+        .contact { text-align: center; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Raj Patel</h1>
+            <p>Full Stack Developer | UI/UX Designer</p>
+            <p>Building high-performance web experiences for global clients.</p>
+            <a href="#projects" class="btn">View My Work</a>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto;">
+                I am a passionate developer with experience building diverse web solutions, from E-commerce platforms in Belgium to Construction services in Australia. I specialize in creating responsive, user-friendly, and SEO-optimized websites.
+            </p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="project-grid">
+                
+                <div class="card">
+                    <h3>Nova Market</h3>
+                    <div><span class="tag">E-Commerce</span> <span class="tag">Retail</span></div>
+                    <p>A full-featured grocery e-commerce platform with dynamic inventory and bilingual support.</p>
+                    <a href="https://novamarket.be" target="_blank" class="link">Visit Site &rarr;</a>
+                </div>
+
+                <div class="card">
+                    <h3>Pitcher Perfect Roofing</h3>
+                    <div><span class="tag">Corporate</span> <span class="tag">Lead Gen</span></div>
+                    <p>Corporate site for an Australian roofing company featuring 24/7 emergency lead capture.</p>
+                    <a href="https://pitcherperfectroofing.com.au/" target="_blank" class="link">Visit Site &rarr;</a>
+                </div>
+
+                <div class="card">
+                    <h3>ilek (France)</h3>
+                    <div><span class="tag">Utility</span> <span class="tag">Green Energy</span></div>
+                    <p>Subscription flow and user dashboard for a renewable energy provider.</p>
+                    <a href="https://www.ilek.fr/" target="_blank" class="link">Visit Site &rarr;</a>
+                </div>
+
+                <div class="card">
+                    <h3>Good Earth Tours</h3>
+                    <div><span class="tag">Travel</span> <span class="tag">Booking</span></div>
+                    <p>Complex itinerary builder for international safari and trek bookings.</p>
+                    <a href="https://goodearthtours.com/" target="_blank" class="link">Visit Site &rarr;</a>
+                </div>
+
+                <div class="card">
+                    <h3>AWAG India</h3>
+                    <div><span class="tag">Non-Profit</span> <span class="tag">NGO</span></div>
+                    <p>Accessible NGO website with secure donation gateway integration.</p>
+                    <a href="https://awagindia.org/" target="_blank" class="link">Visit Site &rarr;</a>
+                </div>
+
+                <div class="card">
+                    <h3>At Height (UK)</h3>
+                    <div><span class="tag">B2B</span> <span class="tag">Industrial</span></div>
+                    <p>Technical catalog for safety equipment with granular filtering.</p>
+                    <a href="https://at-height.co.uk/" target="_blank" class="link">Visit Site &rarr;</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container contact">
+            <h2>Get In Touch</h2>
+            <p>Ready to start a project? Let's connect.</p>
+            <p><strong>Email:</strong> [Your Email Address]</p>
+            <p><strong>LinkedIn:</strong> [Your LinkedIn Link]</p>
+        </div>
+    </section>
+
+</body>
+</html>
